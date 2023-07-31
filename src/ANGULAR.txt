@@ -1,0 +1,15 @@
+ANGULAR
+
+Steps to create an Angular Project
+
+- npm i @angular/cli -g
+
+- ng new projectName
+
+- For Lazy loading module.... ng generate module moduleName -- route moduleName --module app.module
+
+- To create a component.... ng generate component componentName ..... or ..... ng g c componentName
+
+- To create a class.... ng generate class className
+
+- To open an angular project in the browser...ng serve --open ........or ........ ng s --o
