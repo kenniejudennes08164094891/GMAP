@@ -1,5 +1,7 @@
 <h1>Table Component</h1>
-<button>Logout</button>
+<button (click)="logout()">Logout</button>
+<br><br>
+<button (click)="toFormPage()">Form Page</button>
 <br><br>
 
 
@@ -11,15 +13,15 @@
         <th>Gender</th>
         <th></th>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>Maria Anders</td>
-        <td>Germany</td>
-        <td>M</td>
+    <tr *ngFor="let item of user; let id = index;">
+        <td>{{id + 1}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.account}}</td>
+        <td>{{item.gender}}</td>
         <td>
-            <button (click)="routeToFormPage()">Edit</button> &nbsp;&nbsp;
-            <button (click)=" routeToProfile()">View</button> &nbsp;&nbsp;
-            <button>Delete</button>
+            <button (click)="editValues(item)">Edit</button> &nbsp;&nbsp;
+            <button (click)=" routeToProfile(item)">View</button> &nbsp;&nbsp;
+            <button (click)="deleteValue(item)">Delete</button>
         </td>
     </tr>
 </table>
