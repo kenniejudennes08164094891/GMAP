@@ -39,19 +39,20 @@ export class LoginComponent implements OnInit {
 
   loginUser(){
     console.log("user credentials>>", this.loginForm.value);
-    // this.loginAuth.userIsLoggedInDB(this.user).subscribe({
-    //   next: (userCredentials: any) => {
-    //     this.loginAuth.setUserToken(userCredentials.email);
-    //     this.router.navigateByUrl("/content/dashboard");
-    //   },
-    //   error: (err: any) => {
-    //     console.error("error from login>>", err);
-    //     confirm(err);
-    //   },
-    //   complete: () => {
-    //     console.info("login Impl!")
-    //   }
-    // })
+    this.user = this.loginForm.value;
+    this.loginAuth.userIsLoggedInDB(this.user).subscribe({
+      next: (userCredentials: any) => {
+        this.loginAuth.setUserToken(userCredentials.email);
+        this.router.navigateByUrl("/content/dashboard");
+      },
+      error: (err: any) => {
+        console.error("error from login>>", err);
+        confirm(err);
+      },
+      complete: () => {
+        console.info("login Impl!")
+      }
+    })
 
   }
 

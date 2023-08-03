@@ -45,8 +45,8 @@ constructor(private router: Router, private route: ActivatedRoute, private servi
 
   ngOnInit(): void {
       this.userObject = this.service.getUserProfile();
-      console.log("user profile is Gotten>>", this.userObject);
-      this.SubmitUser()
+      this.SubmitUser();
+      this.userForm.patchValue(this.service.getUserProfile());  //to auto-populate the form on edits
   }
 
 
