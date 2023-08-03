@@ -4,21 +4,34 @@
 
         <h1>Kindly edit to your heart's content</h1>
 
-        <form action="submit">
+        <form action="submit" [formGroup]="userForm" (ngSubmit)="submit()">
 
-            <input type="text" name="name" id="name" placeholder="Please input your Name" [(ngModel)]="name" [value]="name"><br>
+            <input type="text" id="name" placeholder="Please input your Name" formControlName="name">
+            <br>
+            <span *ngIf="userForm.get('name')?.invalid && (userForm.get('name')?.touched || userForm.get('name')?.dirty)">
+              <small  id="text-red" *ngIf="this.userForm.get('name')?.errors?.['required']">User's name is required!</small>
+              <small  id="text-red" *ngIf="this.userForm.get('name')?.errors?.['pattern']">Only Alphabets are required!</small>
+            </span>
+            <br><br>
 
-            <input type="text" name="accountNumber" id="accountNum" placeholder="Please input your Account Number" [(ngModel)]="accountNum" [value]="accountNum"><br>
+            <input type="text" id="accountNum" placeholder="Please input your Account Number" formControlName="account">
+            <br>
+            <span *ngIf="userForm.get('account')?.invalid && (userForm.get('account')?.touched || userForm.get('account')?.dirty)">
+              <small  id="text-red" *ngIf="this.userForm.get('account')?.errors?.['required']">Account Number is required!</small>
+              <small  id="text-red" *ngIf="this.userForm.get('account')?.errors?.['pattern']">Only Numbers are required!</small>
+              <small  id="text-red" *ngIf="this.userForm.get('account')?.errors?.['minlength']">Account Number must be at least 10 digits!</small>
+              <small  id="text-red" *ngIf="this.userForm.get('account')?.errors?.['maxlength']">Account Number must be at most 10 digits!</small>
+            </span>
+            <br><br>
+            <input type="radio" id="male" value="Male" formControlName="gender">
+            <label for="gender ">Male</label>
 
-            <input type="radio" name="gender" id="male" value="Male" [(ngModel)]="gender">
-            <label for="gender">Male</label>
-
-            <input type="radio" name="gender" id="female" value="Female" [(ngModel)]="gender">
-            <label for="gender">Female</label>
+            <input type="radio" name="gender " id="female " value="Female" formControlName="gender">
+            <label for="gender ">Female</label>
 
         </form>
 
-        <button type="submit" (click)="submit()">Submit</button>
+        <button type="submit" (click)="submit()" [disabled]="!userForm.valid">Submit</button>
 
     </div>
 

@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { User, UserObject } from './components/models/user';
 import { UserServiceService } from './components/services/user-service.service';
 import { Subscription, debounceTime } from 'rxjs';
-
+import { LoginAuthService } from '../login/services/login-auth.service';
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
@@ -20,7 +20,8 @@ export class ContentComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private service: UserServiceService
+    private service: UserServiceService,
+    private authService: LoginAuthService
   ){}
 
 
@@ -55,8 +56,8 @@ export class ContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   // this.getUserDetails();
-   this.getUserObservableArray();
+   this.getUserDetails();
+   //this.getUserObservableArray();
   }
 
   routeToProfile(item: UserObject){
@@ -74,7 +75,7 @@ export class ContentComponent implements OnInit {
 
 
   logout(){
-    this.router.navigate(["/login/loginAuthentication"],{relativeTo: this.route});
+    this.authService.logoutUser();
   }
 
 }
