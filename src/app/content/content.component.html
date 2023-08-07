@@ -5,7 +5,7 @@
 <br><br>
 
 
-<table>
+<!-- <table>
     <tr>
         <th>S/N</th>
         <th>Name</th>
@@ -20,8 +20,75 @@
         <td>{{item.gender}}</td>
         <td>
             <button (click)="editValues(item)">Edit</button> &nbsp;&nbsp;
-            <button (click)=" routeToProfile(item)">View</button> &nbsp;&nbsp;
+            <button (click)=" routeToProfile(item, id)">View</button> &nbsp;&nbsp;
+            <button (click)="deleteValue(item)">Delete</button>
+        </td>
+    </tr>
+</table> -->
+
+<table>
+    <tr>
+        <th>S/N</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let item of userArray; let id = index;">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <!-- <td [ngSwitch]="item.status">
+            <span *ngSwitchCase="'Active'" id="active">{{item.status}}</span>
+            <span *ngSwitchCase="'Pending'" id="pending">{{item.status}}</span>
+            <span *ngSwitchCase="'Rejected'" id="rejected">{{item.status}}</span>
+        </td> -->
+        <td [ngSwitch]="item.status">
+            <span *ngIf="item.status === 'Active'" id="active">{{item.status}}</span>
+            <span *ngIf="item.status === 'Pending'" id="pending">{{item.status}}</span>
+            <span *ngIf="item.status === 'Rejected'" id="rejected">{{item.status}}</span>
+        </td>
+        <td>
+            <button (click)="editValues(item)">Edit</button> &nbsp;&nbsp;
+            <button (click)=" routeToProfile(item, id)">View</button> &nbsp;&nbsp;
             <button (click)="deleteValue(item)">Delete</button>
         </td>
     </tr>
 </table>
+
+<br><br>
+<div>Angular Component Directive</div>
+<br>
+<button (click)="showParagraph1()">Show Para1</button>&nbsp;&nbsp;&nbsp;<button (click)="showParagraph2()">Show Para2</button>
+<br>
+<br>
+<br>
+
+<div>
+    <span *ngIf="showParagraph1Info === true">Hey this is paragraph 1</span>
+    <br><br>
+    <span *ngIf="showParagraph2Info === true">Hey this is paragraph 2</span>
+</div>
+
+<br>
+<div>
+    <ul>
+        <li *ngFor="let item of emptyArray">
+            {{item}}
+        </li>
+    </ul>
+</div>
+
+<br>
+<br>
+
+<div>
+    <!-- <button [ngClass]="{'btn-active' : isActive}" (click)="toggleButtonColor()">
+    Toggle  display
+  </button> -->
+
+    <!--[routerLink]="'/content/form'"-->
+    <button [ngClass]="{'btn-active' : isActive, 'btn-pending': !isActive}" (click)="toggleButtonColor()">
+    Toggle  display
+  </button>
+    <br><br>
+    <button [routerLink]="'/Parent/Parent'">To Parent Component</button>
+</div>

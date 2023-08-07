@@ -30,14 +30,11 @@ constructor(private router: Router, private route: ActivatedRoute, private servi
 
   submit(){
    if(this.userForm.valid){
-    // const newObject = {
-    //   firstName: this.userForm.get('name')?.value,
-    //   accountNumber: this.userForm.get('account')?.value,
-    // }
 
     this.userObject = this.userForm.value;
-    this.service.setUserArray(this.userObject);
+   // this.service.setUserArray(this.userObject);
    //this.service.setUerObservable(this.userObject);
+   this.service.setUserEventValue(this.userObject);
      this.router.navigate(['/content/dashboard'],{relativeTo: this.route});
    }
 

@@ -14,14 +14,18 @@ export class ProfileComponent implements OnInit {
     account: "",
     gender: ""
   }
+
   constructor(private service: UserServiceService, private router: Router){}
 
   ngOnInit(): void {
     this.user = this.service.getUserProfile();
+    console.log("user>>", this.user)
   }
 
   routeBack(){
     this.router.navigate(["/content/dashboard"]);
   }
+
+
 
 }

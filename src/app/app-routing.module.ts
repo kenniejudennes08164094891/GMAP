@@ -7,7 +7,8 @@ const routes: Routes = [
   { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
   { path: 'content', loadChildren: () => import('./content/content.module').then(m => m.ContentModule),
    canActivate: [familyGuard]
-  }
+  },
+  { path: 'Parent', loadChildren: () => import('./parent/parent.module').then(m => m.ParentModule),canActivate:[familyGuard] }
 ];
 
 @NgModule({

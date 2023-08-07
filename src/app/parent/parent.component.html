@@ -1,0 +1,27 @@
+<p>Parent Component</p><br>
+<button (click)="speakToChild()">Parent Speaks</button>: {{messageFromParent}}
+<br>
+<span>Message from Child1: {{parentRecievesMessage}}</span>
+<br>
+<hr>
+<br><br>
+<div class="grid-container">
+    <div class="grid-item" id="first">
+        First Child Component
+        <br>
+        <app-first-child [childrenListen]="messageFromParent" (firstChildMessageEmit$)="recieveFirstChildMessage($event)"></app-first-child>
+        <!-- [childrenListen]="messageFromParent" .... is used to speak to child.. @Input-->
+        <!-- (firstChildMessageEmit$)="recieveFirstChildMessage($event)...is used to speak to parent .. @Output" -->
+    </div>
+    <div class="grid-item" id="second">
+        Second Component
+        <br>
+        <app-second-child [childrenListen]="messageFromParent"></app-second-child>
+    </div>
+    <div class="grid-item" id="third">
+        Third Component
+        <br>
+        <app-third-child [childrenListen]="messageFromParent"></app-third-child>
+
+    </div>
+</div>

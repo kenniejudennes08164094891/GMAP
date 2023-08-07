@@ -1,0 +1,29 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Creates 3 columns with equal width */
+    grid-template-rows: 100px;
+    /* Creates 1 row with a height of 100px */
+    gap: 10px;
+    /* Adds 10px gap between grid items */
+}
+
+.grid-item {
+    padding: 10px;
+    text-align: center;
+}
+
+#first {
+    background-color: blue;
+    color: white
+}
+
+#second {
+    background-color: rgb(252, 78, 107);
+    color: white
+}
+
+#third {
+    background-color: green;
+    color: white
+}

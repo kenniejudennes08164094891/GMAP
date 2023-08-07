@@ -7,7 +7,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 const routes: Routes = [
   { path: 'dashboard', component: ContentComponent },
   { path: 'form', component: FormPageComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile/:id', component: ProfileComponent },
 ];
 
 @NgModule({

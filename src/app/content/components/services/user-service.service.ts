@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { User, UserObject } from '../models/user';
 // Observables
 import { Observable, Subject } from 'rxjs';
@@ -11,8 +11,19 @@ export class UserServiceService {
 
   private $user = new Subject<any>();     //Observables
   user: User[] | any = [];
-  userObj!: UserObject
+  userObj!: UserObject;
+
+  public emitUser$: EventEmitter<any> = new EventEmitter();
+
+
   constructor() { }
+
+  //Event Emitters
+
+  public setUserEventValue(user: UserObject){
+    this.emitUser$.emit(user);
+  }
+
 
   //Observables
   public setUerObservable(user: UserObject){
