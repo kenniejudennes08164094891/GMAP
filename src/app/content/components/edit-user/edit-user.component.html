@@ -2,26 +2,26 @@
 
     <div class="form-container">
 
-        <h1>Kindly Create User Content</h1>
+        <h1>Kindly Edit User Content</h1>
 
         <form action="submit" [formGroup]="userForm" (ngSubmit)="submit()">
 
             <input type="text" id="name" placeholder="Please input your Name" formControlName="name">
             <br>
             <span *ngIf="userForm.get('name')?.invalid && (userForm.get('name')?.touched || userForm.get('name')?.dirty)">
-              <small  id="text-red" *ngIf="this.userForm.get('name')?.errors?.['required']">User's name is required!</small>
-              <small  id="text-red" *ngIf="this.userForm.get('name')?.errors?.['pattern']">Only Alphabets are required!</small>
-            </span>
+            <small  id="text-red" *ngIf="this.userForm.get('name')?.errors?.['required']">User's name is required!</small>
+            <small  id="text-red" *ngIf="this.userForm.get('name')?.errors?.['pattern']">Only Alphabets are required!</small>
+          </span>
             <br><br>
 
             <input type="text" id="accountNum" placeholder="Please input your Account Number" formControlName="account">
             <br>
             <span *ngIf="userForm.get('account')?.invalid && (userForm.get('account')?.touched || userForm.get('account')?.dirty)">
-              <small  id="text-red" *ngIf="this.userForm.get('account')?.errors?.['required']">Account Number is required!</small>
-              <small  id="text-red" *ngIf="this.userForm.get('account')?.errors?.['pattern']">Only Numbers are required!</small>
-              <small  id="text-red" *ngIf="this.userForm.get('account')?.errors?.['minlength']">Account Number must be at least 10 digits!</small>
-              <small  id="text-red" *ngIf="this.userForm.get('account')?.errors?.['maxlength']">Account Number must be at most 10 digits!</small>
-            </span>
+            <small  id="text-red" *ngIf="this.userForm.get('account')?.errors?.['required']">Account Number is required!</small>
+            <small  id="text-red" *ngIf="this.userForm.get('account')?.errors?.['pattern']">Only Numbers are required!</small>
+            <small  id="text-red" *ngIf="this.userForm.get('account')?.errors?.['minlength']">Account Number must be at least 10 digits!</small>
+            <small  id="text-red" *ngIf="this.userForm.get('account')?.errors?.['maxlength']">Account Number must be at most 10 digits!</small>
+          </span>
             <br><br>
             <input type="radio" id="Male" value="Male" formControlName="gender">
             <label for="gender ">Male</label>

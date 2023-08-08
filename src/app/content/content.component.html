@@ -30,22 +30,25 @@
     <tr>
         <th>S/N</th>
         <th>Name</th>
-        <th>Status</th>
+        <th>Account</th>
+        <th>Gender</th>
         <th></th>
     </tr>
-    <tr *ngFor="let item of userArray; let id = index;">
+    <tr *ngFor="let item of user; let id = index;">
         <td>{{item.id}}</td>
         <td>{{item.name}}</td>
+        <td>{{item.account}}</td>
+        <td>{{item.gender}}</td>
         <!-- <td [ngSwitch]="item.status">
             <span *ngSwitchCase="'Active'" id="active">{{item.status}}</span>
             <span *ngSwitchCase="'Pending'" id="pending">{{item.status}}</span>
             <span *ngSwitchCase="'Rejected'" id="rejected">{{item.status}}</span>
         </td> -->
-        <td [ngSwitch]="item.status">
+        <!-- <td [ngSwitch]="item.status">
             <span *ngIf="item.status === 'Active'" id="active">{{item.status}}</span>
             <span *ngIf="item.status === 'Pending'" id="pending">{{item.status}}</span>
             <span *ngIf="item.status === 'Rejected'" id="rejected">{{item.status}}</span>
-        </td>
+        </td> -->
         <td>
             <button (click)="editValues(item)">Edit</button> &nbsp;&nbsp;
             <button (click)=" routeToProfile(item, id)">View</button> &nbsp;&nbsp;

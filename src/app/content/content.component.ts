@@ -69,8 +69,8 @@ export class ContentComponent implements OnInit, OnDestroy {
 
 
   editValues(item: UserObject){
-    this.service.setUserProfile(item);
-    this.router.navigate(["/content/form"],{relativeTo: this.route});
+  this.service.setUserProfile(item);
+  this.router.navigate(["/content/editUser"],{relativeTo: this.route});
   }
 
   getUserDetails(){
@@ -119,29 +119,56 @@ export class ContentComponent implements OnInit, OnDestroy {
     })
   }
 
+  getUserFromAPI(){
+    this.service.getUserDetails().subscribe({
+      next: (res: any) => {
+        console.log("response from GET request>>", res);
+        this.user = res;
+      },
+      error: (err: any) => {
+        console.error("error from API>>", err)
+      },
+      complete: () => {
+        console.info("Fetch API request!")
+      }
+    })
+  }
+
   ngOnInit(): void {
   // this.getUserDetails();
-   this.getUserObservableArray();
-   this.getUserEmitted();
+   //this.getUserObservableArray();
+   //this.getUserEmitted();
+   this.getUserFromAPI();
   }
 
   ngOnDestroy(): void {
-      this.userArray$.unsubscribe();
-     this.userEmitter$.unsubscribe();
+     // this.userArray$.unsubscribe();
+  //   this.userEmitter$.unsubscribe();
 
   }
 
   routeToProfile(item: UserObject, id: number){
-    console.log("profile>>",item);
     this.service.setUserProfile(item);
     this.router.navigate([`/content/profile/${id+1}`],{relativeTo: this.route});
    // this.router.navigateByUrl(`/content/profile/${id+1}`)
   }
 
   deleteValue(item: UserObject){
-    this.user.forEach((row: any, index: any) => {
-      if(item === row){
-        this.user.splice(index, 1);
+    // this.user.forEach((row: any, index: any) => {
+    //   if(item === row){
+    //     this.user.splice(index, 1);
+    //   }
+    // })
+    this.service.deleteUser(item?.id).subscribe({
+      next: (res: any) => {
+      this.ngOnInit();
+        console.log("delete response from API>>", res);
+      },
+      error: (err: any) => {
+        console.error("error from delete API>>", err);
+      },
+      complete: () => {
+      console.info("User Deleted!");
       }
     })
   }
