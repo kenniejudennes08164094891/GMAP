@@ -3,6 +3,7 @@
 <br><br>
 <button (click)="toFormPage()">Form Page</button>
 <br><br>
+<button on-click="paginate()">Pagination Table</button>
 
 
 <!-- <table>
@@ -93,5 +94,9 @@
     Toggle  display
   </button>
     <br><br>
-    <button [routerLink]="'/Parent/Parent'">To Parent Component</button>
+    <button [routerLink]="'/Parent/Parent'">To Parent Component</button><br><br>
+
+    <span>PIE CHART</span><br>
+    <!-- <google-chart #chart [title]="title" [type]="type" [data]="data" [columns]="columnNames" [options]="options" [width]="width" [height]="height">
+    </google-chart> -->
 </div>

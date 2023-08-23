@@ -3,8 +3,9 @@ import { User, UserObject } from '../models/user';
 // Observables
 import { Observable, Subject, map } from 'rxjs';
 //REST API
-import { BaseUrl } from 'api.env';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BaseUrl, paginateURL } from 'api.env';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { PaginateResponse } from '../models/user';
 
 
 
@@ -114,5 +115,21 @@ export class UserServiceService {
     return this.http.delete<any>(deleteUserByIDUrl, {headers});
 
   }
+
+  public fetchPaginationData(offset: number, limit: number):Observable<PaginateResponse>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'method': 'GET'
+    })
+
+    let fetchUrl = `${paginateURL}/v1/sample-data/users`;
+    //HttpParams
+    const params = new HttpParams().set('offset', offset.toString()).set('limit', limit.toString());
+    return this.http.get<PaginateResponse>(fetchUrl, {headers, params})?.pipe(map((res:any) => {
+      //console.log('response from API>>', res);
+      return res;
+    }))
+  }
+
 
 }

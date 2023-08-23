@@ -42,10 +42,13 @@ export class ProfileComponent implements OnInit {
 
 
 
+
+
+
   ngOnInit(): void {
     console.log("routes>>", this.route);
     this.getParams();
-    this.getUserByID()
+    this.getUserByID();
    // this.user = this.service.getUserProfile();
   //  console.log("user>>", this.user)
   }

@@ -9,20 +9,31 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+//import { GoogleChartsModule } from 'angular-google-charts';
+import { PaginationComponent } from './components/pagination/pagination.component';     //npm i angular-google-charts
+import {MatSelectModule} from '@angular/material/select';
+
+const materialModules = [
+  MatSelectModule
+]
 
 @NgModule({
   declarations: [
     ContentComponent,
     FormPageComponent,
     ProfileComponent,
-    EditUserComponent
+    EditUserComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,
     ContentRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
-  ]
+    HttpClientModule,
+    materialModules
+   // GoogleChartsModule
+  ],
+
 })
 export class ContentModule { }

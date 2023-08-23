@@ -1,3 +1,10 @@
 {
-  "posts": []
+  "posts": [
+    {
+      "name": "kenny",
+      "account": "0000000000",
+      "gender": "Male",
+      "id": 1
+    }
+  ]
 }

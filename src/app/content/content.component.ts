@@ -4,6 +4,9 @@ import { User, UserObject } from './components/models/user';
 import { UserServiceService } from './components/services/user-service.service';
 import { Subscription, debounceTime } from 'rxjs';
 import { LoginAuthService } from '../login/services/login-auth.service';
+
+//import { GoogleChartComponent } from 'angular-google-charts';
+
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
@@ -59,6 +62,22 @@ export class ContentComponent implements OnInit, OnDestroy {
       status: "Rejected"
     }
   ]
+
+  //Google pie-chart
+
+  title = 'googlechart';
+  type: any = 'PieChart';
+  data = [
+     ['Name1', 5.0],
+     ['Name2', 36.8],
+     ['Name3', 42.8],
+     ['Name4', 18.5],
+     ['Name5', 16.2]
+  ];
+ columnNames: any = ['Name', 'Percentage'];
+ options = {   colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'], is3D: true};
+  width = 700;
+  height = 500;
 
   constructor(
     private router: Router,
@@ -145,6 +164,10 @@ export class ContentComponent implements OnInit, OnDestroy {
      // this.userArray$.unsubscribe();
   //   this.userEmitter$.unsubscribe();
 
+  }
+
+  paginate(){
+    this.router.navigateByUrl("/content/pagination");
   }
 
   routeToProfile(item: UserObject, id: number){

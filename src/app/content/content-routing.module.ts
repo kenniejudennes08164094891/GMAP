@@ -4,12 +4,14 @@ import { ContentComponent } from './content.component';
 import { FormPageComponent } from './components/form-page/form-page.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: ContentComponent },
   { path: 'form', component: FormPageComponent },
   { path: 'profile/:id', component: ProfileComponent },
   { path: 'editUser', component: EditUserComponent },
+  {path: 'pagination', component: PaginationComponent}
 ];
 
 @NgModule({
